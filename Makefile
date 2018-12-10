@@ -6,11 +6,13 @@
 #    By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/21 14:58:27 by jrameau           #+#    #+#              #
-#    Updated: 2018/11/26 00:17:26 by fwuensch         ###   ########.fr        #
+#    Updated: 2018/12/10 19:56:10 by fwuensch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -I. -c
 
@@ -84,15 +86,13 @@ SRC = 	ft_memset.c \
 		ft_strlowcase.c \
 		ft_strrev.c \
 
-OBJ = $(SRC:%.c=%.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-$(OBJ): $(SRC)
-	gcc $(CFLAGS) $(SRC)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 clean:
 	rm -f $(OBJ)
